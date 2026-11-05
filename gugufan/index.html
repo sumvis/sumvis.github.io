@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咕咕番-咕咕番动漫_咕咕番追番_新番动漫推荐_动漫番剧合集</title>
+<meta name="description" content="咕咕番是一个围绕动漫番剧整理与追番导航的内容站，汇集新番动漫、经典老番、番剧分类、追番顺序与观看注意事项，帮助动漫爱好者按题材、年份、状态快速找到适合自己的番剧，并理清补番与追番的基本思路。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b2f4a'/%3E%3Ccircle cx='24' cy='26' r='6' fill='%23ffd166'/%3E%3Ccircle cx='42' cy='26' r='6' fill='%23ffd166'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%232b2f4a'/%3E%3Ccircle cx='42' cy='27' r='2.4' fill='%232b2f4a'/%3E%3Cpath d='M22 44c6-5 14-5 20 0' stroke='%23ffd166' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#23263a;
+    --ink-soft:#4a4f6b;
+    --paper:#f6f4ee;
+    --paper-2:#fffdf7;
+    --line:#ddd8ca;
+    --accent:#e0663a;
+    --accent-2:#2f6f7e;
+    --gold:#f0b429;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:var(--accent-2);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* 顶部 */
+  .topbar{
+    background:var(--ink);
+    color:#f2efe6;
+    border-bottom:4px solid var(--gold);
+  }
+  .topbar .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:1px;color:#fff;}
+  .logo svg{width:34px;height:34px;flex:none;}
+  nav.mainnav{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px;}
+  nav.mainnav a{color:#d9d4c4;}
+  nav.mainnav a:hover{color:var(--gold);text-decoration:none;}
+
+  /* 首屏 */
+  .firstscreen{
+    background:linear-gradient(160deg,#2b2f4a 0%,#3b3f60 55%,#4a3f52 100%);
+    color:#f5f1e6;
+    padding:52px 0 44px;
+  }
+  .firstscreen .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:36px;align-items:center;}
+  .firstscreen h1{
+    font-size:34px;line-height:1.35;margin:0 0 14px;letter-spacing:1px;
+  }
+  .firstscreen h1 span{color:var(--gold);}
+  .tagline{
+    font-size:16.5px;color:#ddd7c6;margin:0 0 20px;
+  }
+  .fs-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:10px 22px;border-radius:6px;font-size:15px;font-weight:600;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--gold);color:#2b2f4a;}
+  .btn-primary:hover{background:#ffc84d;text-decoration:none;}
+  .btn-ghost{border-color:#8f8aa6;color:#efeadb;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);text-decoration:none;}
+  .fs-note{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:10px;padding:18px 20px;font-size:14.5px;color:#e4dfd0;
+  }
+  .fs-note strong{color:var(--gold);display:block;margin-bottom:6px;font-size:15px;}
+  .fs-note ul{margin:8px 0 0;padding-left:18px;}
+  .fs-note li{margin-bottom:4px;}
+
+  main{padding:0 0 20px;}
+
+  .block{padding:44px 0;border-bottom:1px solid var(--line);}
+  .block:last-of-type{border-bottom:none;}
+  .block h2{
+    font-size:24px;margin:0 0 6px;letter-spacing:.5px;
+  }
+  .block h2::after{
+    content:"";display:block;width:52px;height:3px;background:var(--accent);margin-top:10px;border-radius:2px;
+  }
+  .block .lead{color:var(--ink-soft);font-size:15px;margin:16px 0 24px;}
+  .block p{margin:0 0 14px;color:#33374d;}
+
+  /* 番剧分类 */
+  .genre-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .genre{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:10px;
+    padding:20px 20px 16px;position:relative;
+  }
+  .genre h3{margin:0 0 8px;font-size:17px;color:var(--ink);}
+  .genre p{margin:0 0 10px;font-size:14.5px;color:var(--ink-soft);}
+  .genre .tagline-mini{font-size:13px;color:var(--accent-2);}
+  .genre::before{
+    content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:2px;background:var(--gold);
+  }
+
+  /* 追番步骤 */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step;}
+  .step{
+    background:#fffdf7;border:1px dashed #cfc8b6;border-radius:10px;padding:18px;
+    counter-increment:step;
+  }
+  .step::before{
+    content:counter(step);display:inline-flex;align-items:center;justify-content:center;
+    width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;
+    font-weight:700;font-size:14px;margin-bottom:10px;
+  }
+  .step h3{margin:0 0 8px;font-size:16px;}
+  .step p{margin:0;font-size:14px;color:var(--ink-soft);}
+
+  /* 补番顺序 */
+  .orderbox{
+    background:#eef3f2;border-left:5px solid var(--accent-2);border-radius:0 10px 10px 0;
+    padding:22px 24px;
+  }
+  .orderbox ol{margin:0;padding-left:20px;color:#33374d;}
+  .orderbox li{margin-bottom:10px;}
+  .orderbox li:last-child{margin-bottom:0;}
+
+  /* 观看注意 */
+  .notes{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .note{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:22px;
+  }
+  .note h3{margin:0 0 10px;font-size:17px;color:var(--accent);}
+  .note ul{margin:0;padding-left:18px;color:#33374d;font-size:14.5px;}
+  .note li{margin-bottom:7px;}
+
+  /* 选番建议 */
+  .pick-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .pick{
+    background:#fffdf7;border:1px solid var(--line);border-radius:10px;padding:20px;
+  }
+  .pick h3{margin:0 0 6px;font-size:16.5px;}
+  .pick .label{
+    display:inline-block;font-size:12.5px;padding:2px 10px;border-radius:20px;
+    background:#f7e8d8;color:#a4471f;margin-bottom:10px;
+  }
+  .pick p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+
+  /* 常见问题 */
+  .faq-item{
+    border-bottom:1px solid var(--line);padding:18px 0;
+  }
+  .faq-item:first-of-type{border-top:1px solid var(--line);}
+  .faq-item h3{margin:0 0 8px;font-size:16.5px;color:var(--ink);}
+  .faq-item p{margin:0;color:var(--ink-soft);font-size:15px;}
+
+  /* 行动区 */
+  .cta{
+    background:linear-gradient(135deg,#2b2f4a,#4a3f52);
+    color:#f5f1e6;border-radius:14px;padding:36px 32px;margin:44px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .cta h2{font-size:22px;margin:0 0 8px;color:#fff;}
+  .cta p{margin:0;font-size:15px;color:#ddd7c6;max-width:640px;}
+
+  footer{
+    background:var(--ink);color:#b9b3a3;padding:28px 0;font-size:14px;
+  }
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  footer a{color:#d9d4c4;}
+
+  @media (max-width:900px){
+    .firstscreen .wrap{grid-template-columns:1fr;gap:24px;}
+    .firstscreen h1{font-size:28px;}
+    .genre-list{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .notes{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    body{font-size:15px;}
+    .topbar .wrap{flex-direction:column;align-items:flex-start;gap:10px;}
+    nav.mainnav{gap:12px;font-size:14px;}
+    .firstscreen{padding:36px 0 30px;}
+    .firstscreen h1{font-size:23px;}
+    .tagline{font-size:15px;}
+    .genre-list{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .pick-list{grid-template-columns:1fr;}
+    .block{padding:32px 0;}
+    .block h2{font-size:20px;}
+    .cta{padding:26px 20px;}
+    .cta h2{font-size:19px;}
+    footer .wrap{flex-direction:column;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#3b3f60"/><circle cx="24" cy="26" r="6" fill="#f0b429"/><circle cx="42" cy="26" r="6" fill="#f0b429"/><circle cx="24" cy="27" r="2.4" fill="#23263a"/><circle cx="42" cy="27" r="2.4" fill="#23263a"/><path d="M22 44c6-5 14-5 20 0" stroke="#f0b429" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      <span>咕咕番</span>
+    </div>
+    <nav class="mainnav" aria-label="主导航">
+      <a href="#genres">番剧分类</a>
+      <a href="#steps">追番步骤</a>
+      <a href="#order">补番顺序</a>
+      <a href="#notes">观看注意</a>
+      <a href="#picks">选番建议</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<section class="firstscreen">
+  <div class="wrap">
+    <div>
+      <h1>咕咕番：番剧整理与追番导航的<span>动漫内容站</span></h1>
+      <p class="tagline">按题材、年份与连载状态梳理动漫番剧，帮助动漫爱好者理清补番思路，找到适合自己的那一部。</p>
+      <div class="fs-actions">
+        <a class="btn btn-primary" href="#genres">查看番剧分类</a>
+        <a class="btn btn-ghost" href="#steps">了解追番步骤</a>
+      </div>
+    </div>
+    <aside class="fs-note">
+      <strong>这个页面能帮你做什么</strong>
+      <ul>
+        <li>弄清咕咕番适合解决哪类追番问题</li>
+        <li>按题材与状态筛选想看的动漫番剧</li>
+        <li>掌握补番顺序与观看前的基本判断</li>
+        <li>了解内容整理的边界与使用注意</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <section class="block" id="intro">
+      <h2>咕咕番是什么，适合哪些动漫观众</h2>
+      <p class="lead">先把概念说清楚，再谈怎么用，避免把番剧整理站误当成播放器。</p>
+      <p>咕咕番是一个以动漫番剧为主题的整理与导航型内容站。它的核心作用不是提供片源，而是把番剧按题材、年份、连载状态、篇幅长短等维度重新组织，让访问者在信息过载的情况下更快缩小选择范围。很多动漫爱好者面对一季几十部新番时，往往不知道该从哪部看起，这类整理页的价值就在于提供可读的分类线索和判断依据。</p>
+      <p>在咕咕番的页面结构里，番剧信息会被拆成“题材标签、适合人群、观看前提、补番顺序”几个层面。这样做的目的，是让不同阶段的观众都能找到入口：刚接触动漫的新人可以从短篇、单季完结的作品入手；追番多年的观众更关心续作衔接和系列顺序；只想找轻松内容的访问者则可以按日常、搞笑、治愈等题材快速过滤。</p>
+      <p>需要说明的是，咕咕番提供的是围绕番剧的整理、分类与观看思路说明，页面本身不承诺任何片源、播放或更新服务。访问者在使用时可以把它当作一个“番剧选择参考层”，先确定方向，再自行前往正规平台查找。理解这一点，能避免对咕咕番产生不切实际的期待。</p>
+      <ul>
+        <li>适合刚入坑、需要挑选第一部动漫的新观众</li>
+        <li>适合想系统补番、理清系列顺序的老观众</li>
+        <li>适合按题材、年份、篇幅做定向筛选的访问者</li>
+        <li>不适合寻找在线播放或下载资源的用户</li>
+      </ul>
+    </section>
+
+    <section class="block" id="genres">
+      <h2>咕咕番的番剧分类方式</h2>
+      <p class="lead">分类不是越细越好，而是要让访问者能在一两步内锁定范围。</p>
+      <p>动漫番剧的分类维度很多，常见的有题材、目标受众、制作年代、单季或长篇、原创或改编等。咕咕番在整理时优先采用访问者最容易理解的维度：先按题材划分大类，再在每类内部标注篇幅与状态。这样的层级安排，能让第一次来到咕咕番的访问者不必先学习复杂术语，也能快速找到方向。</p>
+      <p>题材维度最贴近观看动机。想看热血与成长，可以关注少年向、战斗、竞技类；想放松情绪，可以关注日常、治愈、搞笑类；偏爱推理与悬念，则可以关注悬疑、科幻、奇幻类。咕咕番在每一类下会给出简短的题材说明和适合人群提示，帮助访问者判断是否与自己的口味相符。</p>
+      <p>状态与篇幅维度则更贴近实际观看安排。单季完结的作品适合短期内集中补完，长篇连载作品需要更长的时间投入，尚未完结的作品则要考虑等待更新的心理成本。咕咕番会把这些差异写清楚，让访问者在选择前对时间投入有合理预期，而不是看到标题就盲目开追。</p>
+      <div class="genre-list">
+        <div class="genre">
+          <h3>热血与成长</h3>
+          <p>以战斗、竞技、冒险为主线，强调主角的成长弧线与团队关系。</p>
+          <span class="tagline-mini">适合喜欢节奏推进与目标感的观众</span>
+        </div>
+        <div class="genre">
+          <h3>日常与治愈</h3>
+          <p>节奏平缓，聚焦生活片段与人物互动，情绪基调温和。</p>
+          <span class="tagline-mini">适合放松、碎片时间观看</span>
+        </div>
+        <div class="genre">
+          <h3>悬疑与推理</h3>
+          <p>以谜题、线索和反转为核心，需要观众保持注意力跟随剧情。</p>
+          <span class="tagline-mini">适合喜欢动脑和讨论的观众</span>
+        </div>
+        <div class="genre">
+          <h3>科幻与奇幻</h3>
+          <p>构建架空世界或未来设定，重视世界观铺陈与设定自洽。</p>
+          <span class="tagline-mini">适合喜欢设定考据的观众</span>
+        </div>
+        <div class="genre">
+          <h3>恋爱与青春</h3>
+          <p>围绕情感关系与成长困惑展开，重视人物心理刻画。</p>
+          <span class="tagline-mini">适合关注情感线的观众</span>
+        </div>
+        <div class="genre">
+          <h3>剧场版与短片</h3>
+          <p>篇幅集中，单次观看即可完成，适合时间有限的访问者。</p>
+          <span class="tagline-mini">适合想快速体验一部作品的观众</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="steps">
+      <h2>用咕咕番追番的四个步骤</h2>
+      <p class="lead">把“想看”变成“能看完”，关键在于先定方向再定节奏。</p>
+      <p>追番最大的问题往往不是找不到作品，而是选择太多导致迟迟无法开始。咕咕番建议把追番拆成四个动作：先明确观看目的，再按题材筛选，然后确认篇幅与状态，最后安排观看节奏。这样的顺序能显著降低决策成本，让访问者从浏览页面过渡到真正开始观看。</p>
+      <p>第一步是明确目的。是为了放松、为了讨论、为了补经典，还是为了跟上当季话题？目的不同，适合的番剧类型也完全不同。咕咕番在分类说明中会提示每类内容的观看体验，访问者可以先对号入座，再进入下一步，避免被热门标题带偏。</p>
+      <p>后三步则更偏执行层面。确认篇幅决定了一次投入多少时间，确认状态决定了是否需要等待更新，安排节奏则关系到能否坚持看完。咕咕番在整理时会标注这些信息，访问者不必逐部点开确认，就能对整体计划有基本把握。</p>
+      <div class="steps">
+        <div class="step">
+          <h3>明确观看目的</h3>
+          <p>先想清楚是为了放松、讨论还是补经典，目的越具体，筛选越高效。</p>
+        </div>
+        <div class="step">
+          <h3>按题材缩小范围</h3>
+          <p>在咕咕番的分类中找到两到三个感兴趣的方向，避免同时铺开太多。</p>
+        </div>
+        <div class="step">
+          <h3>确认篇幅与状态</h3>
+          <p>单季完结适合短期补完，长篇与连载中要预留更长的观看周期。</p>
+        </div>
+        <div class="step">
+          <h3>安排观看节奏</h3>
+          <p>按每周固定集数推进，比一次性囤积更容易坚持看完。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="order">
+      <h2>补番顺序与系列衔接的基本思路</h2>
+      <p class="lead">系列作品顺序错了，观感会大打折扣，先理清再开看。</p>
+      <p>很多动漫作品存在多季、外传、剧场版或重制版，直接按热度开看容易错过前提信息。咕咕番在整理系列作品时，会优先标注“主线顺序”和“可选补充”两类内容，让访问者先看主线，再决定是否补外传。这样的安排可以避免因顺序错乱导致的剧情理解障碍。</p>
+      <p>判断顺序的基本原则有三条：一看播出时间，二看剧情时间线，三看官方推荐顺序。多数情况下，播出顺序就是最稳妥的观看顺序；少数采用非线性叙事的作品，则需要按剧情时间线或官方指引调整。咕咕番会在相关条目中说明属于哪种情况，减少访问者的试错成本。</p>
+      <p>对于改编自漫画或小说的作品，还需要注意“原作进度与动画进度不一致”的问题。动画可能只改编了原作的一部分，或在结局处做了原创处理。咕咕番会提示这类差异，帮助访问者在看完动画后判断是否值得继续阅读原作，而不是简单地把两者当成同一内容。</p>
+      <div class="orderbox">
+        <ol>
+          <li>先确认是否为多季系列，避免从续作开始观看。</li>
+          <li>按播出顺序观看通常是安全选择，特殊叙事结构再按官方指引调整。</li>
+          <li>剧场版和外传一般放在主线之后，作为补充内容观看。</li>
+          <li>改编作品注意动画与原作的进度差异，避免预期错位。</li>
+          <li>重制版与旧版择一为主，另一版作为对照参考即可。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="notes">
+      <h2>使用咕咕番时需要留意的几点</h2>
+      <p class="lead">整理信息只是参考，实际观看体验仍要以官方渠道为准。</p>
+      <p>咕咕番的内容定位是番剧整理与观看思路说明，不涉及片源分发。访问者在阅读分类和推荐信息后，应通过正规授权平台查找对应作品。这样既能获得稳定的观看体验，也能避免因来源不明的渠道带来的设备安全与个人信息风险。</p>
+      <p>另外，番剧信息会随时间变化，续作、重制、档期调整都可能影响原有的观看顺序判断。咕咕番在整理时会尽量标注信息的适用范围，但访问者仍需结合官方发布的最新消息进行确认。把整理页当作起点而非终点，是使用这类内容站更合理的方式。</p>
+      <div class="notes">
+        <div class="note">
+          <h3>内容边界</h3>
+          <ul>
+            <li>咕咕番提供分类、顺序与观看思路说明</li>
+            <li>页面不提供片源、播放或下载入口</li>
+            <li>作品信息以官方发布为准</li>
+            <li>不承诺更新频率与内容完整性</li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>观看安全</h3>
+          <ul>
+            <li>优先选择正规授权平台观看</li>
+            <li>谨慎对待来源不明的下载链接</li>
+            <li>不在陌生页面填写账号与支付信息</li>
+            <li>关注未成年人观看的适龄提示</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="picks">
+      <h2>按需求选择番剧的建议</h2>
+      <p class="lead">不同观看场景对应不同的选择标准，先匹配场景再挑作品。</p>
+      <p>时间有限的访问者，可以优先考虑单季完结或剧场版作品，一次投入即可获得完整观感。咕咕番在分类中会把篇幅作为显性标签，帮助这类访问者跳过需要长期投入的长篇。对于通勤、午休等碎片场景，日常与短片类内容通常更合适。</p>
+      <p>希望参与讨论的访问者，则更适合关注当季新番与话题作品。这类内容讨论热度集中，观看后更容易找到交流对象。咕咕番会按季度整理新番方向，但不虚构具体作品数据，访问者可结合自身兴趣判断是否跟进。</p>
+      <p>想系统补经典的访问者，建议按年代与类型分批推进，避免一次性铺开过多系列。咕咕番的分类页支持按题材与状态交叉查看，访问者可以先把范围收窄到一两个方向，再逐步扩展，这样补番过程更有节奏感，也不容易中途放弃。</p>
+      <div class="pick-list">
+        <div class="pick">
+          <span class="label">时间有限</span>
+          <h3>单季完结与剧场版</h3>
+          <p>篇幅集中、观感完整，适合短期内想看完一部作品的访问者。</p>
+        </div>
+        <div class="pick">
+          <span class="label">想参与讨论</span>
+          <h3>当季新番方向</h3>
+          <p>话题集中、交流机会多，适合喜欢边看边聊的观众。</p>
+        </div>
+        <div class="pick">
+          <span class="label">系统补番</span>
+          <h3>按年代与类型分批</h3>
+          <p>先锁定一两个方向，再逐步扩展，避免选择过载。</p>
+        </div>
+        <div class="pick">
+          <span class="label">碎片时间</span>
+          <h3>日常与短片内容</h3>
+          <p>单集时长短、情绪负担低，适合通勤与休息间隙观看。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <h2>关于咕咕番的常见问题</h2>
+      <p class="lead">把最容易混淆的几点一次讲清楚。</p>
+      <div class="faq-item">
+        <h3>咕咕番是播放网站吗？</h3>
+        <p>不是。咕咕番定位为动漫番剧的整理与导航型内容站，主要提供分类、顺序与观看思路说明，不提供片源、播放或下载服务。观看请前往正规授权平台。</p>
+      </div>
+      <div class="faq-item">
+        <h3>咕咕番适合新手使用吗？</h3>
+        <p>适合。新手可以先从分类页的题材说明入手，优先选择单季完结或剧场版作品，降低入门门槛。页面中的追番步骤也按新手视角组织，便于逐步上手。</p>
+      </div>
+      <div class="faq-item">
+        <h3>系列作品应该按什么顺序看？</h3>
+        <p>多数作品按播出顺序观看即可；采用非线性叙事或存在重制版的作品，建议参考官方指引或剧情时间线。咕咕番会在相关说明中提示差异，减少试错成本。</p>
+      </div>
+      <div class="faq-item">
+        <h3>页面里的番剧信息会更新吗？</h3>
+        <p>番剧信息会随档期、续作和重制情况变化。咕咕番会尽量标注适用范围，但具体信息仍以官方发布为准，建议观看前再次确认。</p>
+      </div>
+      <div class="faq-item">
+        <h3>为什么有些分类下没有具体作品列表？</h3>
+        <p>咕咕番以分类方法和观看思路说明为主，部分分类处于持续整理中。页面不会用虚构作品填充列表，访问者可先参考分类说明确定方向。</p>
+      </div>
+      <div class="faq-item">
+        <h3>未成年人使用需要注意什么？</h3>
+        <p>建议在监护人指导下选择适龄内容，关注官方分级与提示信息，避免接触不适合的题材。观看时间也应合理安排，不影响学习与休息。</p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <h2>从咕咕番的分类页开始你的追番计划</h2>
+        <p>先确定题材方向，再确认篇幅与状态，最后安排每周节奏。咕咕番把选择过程拆成可执行的步骤，让补番和追番都更有条理。</p>
+      </div>
+      <a class="btn btn-primary" href="#genres">进入番剧分类</a>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>咕咕番 · 动漫番剧整理与追番导航内容站</span>
+    <span>分类与顺序说明仅供参考，作品信息以官方发布为准。</span>
+  </div>
+</footer>
+
+</body>
+</html>
